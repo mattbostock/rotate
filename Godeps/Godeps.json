@@ -1,0 +1,14 @@
+{
+	"ImportPath": "github.com/mattbostock/rotate",
+	"GoVersion": "go1.4.2",
+	"Deps": [
+		{
+			"ImportPath": "github.com/stretchr/testify/assert",
+			"Rev": "1297dc01ed0a819ff634c89707081a4df43baf6b"
+		},
+		{
+			"ImportPath": "github.com/termie/go-shutil",
+			"Rev": "bcacb06fecaeec8dc42af03c87c6949f4a05c74c"
+		}
+	]
+}
