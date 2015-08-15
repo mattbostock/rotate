@@ -8,4 +8,5 @@ build:
 
 test:
 	go build -ldflags "-X main.version testversion" -o rotate-test
-	go test -v ./...; rm rotate-test
+	go test -v ./...
+	rm rotate-test
