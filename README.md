@@ -1,4 +1,5 @@
 [![Go Report Card](http://goreportcard.com/badge/mattbostock/rotate)](http://goreportcard.com/report/mattbostock/rotate)
+[![Build Status](https://travis-ci.org/mattbostock/rotate.svg?branch=master)](https://travis-ci.org/mattbostock/rotate)
 
 # rotate
 
