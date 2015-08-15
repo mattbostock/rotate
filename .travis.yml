@@ -1,0 +1,17 @@
+---
+language: "go"
+go:
+  - "1.4.2"
+  - "tip"
+
+matrix:
+  allow_failures:
+    - go: "tip"
+
+script: "make test"
+
+notifications:
+  email: false
+
+# Enable faster container builds: http://docs.travis-ci.com/user/workers/container-based-infrastructure/
+sudo: false
