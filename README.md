@@ -7,6 +7,16 @@ A small command-line utility to rotate a file or directory.
 
 Follows a specified schedule passed as a commandline argument and purges old rotations.
 
+## Rationale
+
+I've seen a number scripts written to perform backups implement file rotation
+in diverse ways, often without tests to verify their behaviour.
+
+To avoid reinventing the wheel each time, it occurred to me that it would be
+useful to have a utility that does the one job of rotating a file or directory.
+I couldn't find any existing utility that compiles to a binary to fulfill that
+task, so I wrote this one.
+
 ## Usage
 
 ```
