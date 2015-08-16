@@ -219,11 +219,12 @@ func TestRotation(t *testing.T) {
 		}
 
 		exitcode, _ := runCmd(t, "-schedule="+strings.Join(e.schedule, ","), e.source, e.dest)
+		destDirTree := dirTree(e.dest)
 
 		assert.True(
 			t,
-			reflect.DeepEqual(e.expected, dirTree(e.dest)),
-			fmt.Sprintf("File structure does not match expected:\nExpected:\n%#v\n\nGot:\n%#v\n", e.expected, dirTree(e.dest)),
+			reflect.DeepEqual(e.expected, destDirTree),
+			fmt.Sprintf("File structure does not match expected:\nExpected:\n%#v\n\nGot:\n%#v\n", e.expected, destDirTree),
 		)
 		assert.Equal(t, exitcode, 0)
 
