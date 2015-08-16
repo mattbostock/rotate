@@ -13,7 +13,7 @@ Follows a specified schedule passed as a commandline argument and purges old rot
 ./rotate -help
 Usage of ./rotate:
   -format="2006-01-02": date format used in filenames as a representation of January 2, 2006
-  -schedule="1d:7,1w:4,1m:12,1y:4": rotation schedule and retention period
+  -schedule="1d:7,1w:5,1m:12,1y:4": rotation schedule and retention period
   -verbose=false: verbose output
   -version=false: prints current version
 ```
