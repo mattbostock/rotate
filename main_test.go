@@ -235,10 +235,19 @@ func TestRotation(t *testing.T) {
 	}
 }
 
-func dirTree(dir string) []string {
+func dirTree(dir string) (ret []string) {
 	f, err := os.Open(dir)
 	if err != nil {
 		panic(err)
+	}
+
+	stat, err := f.Stat()
+	if err != nil {
+		panic(err)
+	}
+
+	if !stat.IsDir() {
+		return
 	}
 
 	names, err := f.Readdirnames(0)
@@ -246,7 +255,6 @@ func dirTree(dir string) []string {
 		panic(err)
 	}
 
-	var ret []string
 	for _, d := range names {
 		contents := dirTree(filepath.Join(dir, d))
 		if len(contents) == 0 {
@@ -257,6 +265,5 @@ func dirTree(dir string) []string {
 	}
 
 	sort.Strings(ret)
-	return ret
-
+	return
 }
