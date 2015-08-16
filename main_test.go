@@ -6,6 +6,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"reflect"
+	"sort"
 	"strings"
 	"syscall"
 	"testing"
@@ -255,6 +256,7 @@ func dirTree(dir string) []string {
 		}
 	}
 
+	sort.Strings(ret)
 	return ret
 
 }
