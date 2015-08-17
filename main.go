@@ -109,6 +109,10 @@ func init() {
 	flag.StringVar(&config.schedule, "schedule", "1d:7,1w:5,1m:12,1y:4", "rotation schedule and retention period")
 	flag.BoolVar(&config.version, "version", false, "prints current version")
 	flag.BoolVar(&config.verbose, "verbose", false, "verbose output")
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Usage: %s <source> <target>\n", os.Args[0])
+		flag.PrintDefaults()
+	}
 }
 
 func main() {
