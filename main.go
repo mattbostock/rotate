@@ -15,7 +15,10 @@ import (
 	"github.com/termie/go-shutil"
 )
 
-const daysPerWeek = 7
+const (
+	daysPerWeek = 7
+	format      = "2006-01-02"
+)
 
 var version string
 
@@ -97,14 +100,12 @@ func (p lastRotations) Swap(a, b int) {
 }
 
 var config struct {
-	format   string
 	schedule string
 	version  bool
 	verbose  bool
 }
 
 func init() {
-	flag.StringVar(&config.format, "format", "2006-01-02", "date format used in filenames as a representation of January 2, 2006")
 	flag.StringVar(&config.schedule, "schedule", "1d:7,1w:5,1m:12,1y:4", "rotation schedule and retention period")
 	flag.BoolVar(&config.version, "version", false, "prints current version")
 	flag.BoolVar(&config.verbose, "verbose", false, "verbose output")
@@ -200,7 +201,7 @@ func rotate(schedule []*rotation, source, target string) error {
 			}
 
 			var rotatedTime time.Time
-			if rotatedTime, err = time.Parse(config.format, f.Name()); err != nil {
+			if rotatedTime, err = time.Parse(format, f.Name()); err != nil {
 				fmt.Fprintf(os.Stderr, "Ignoring directory with mismatched date format: %q", filepath.Join(rotationDir, f.Name()))
 				continue
 			}
@@ -210,13 +211,9 @@ func rotate(schedule []*rotation, source, target string) error {
 
 		sort.Sort(foundRotations)
 
-		// Get current time to the resolution allowed by the user-specified date format
-		timeNow, err := time.Parse(config.format, time.Now().Format(config.format))
-		if err != nil {
-			panic(err)
-		}
+		timeNow := time.Now()
 
-		curDir := filepath.Join(rotationDir, timeNow.Format(config.format))
+		curDir := filepath.Join(rotationDir, timeNow.Format(format))
 		rotateNow := false
 
 		if len(foundRotations) > 0 {
