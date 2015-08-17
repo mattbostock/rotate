@@ -21,7 +21,7 @@ task, so I wrote this one.
 
 ```
 ./rotate -help
-Usage of ./rotate:
+Usage: ./rotate <source> <target>
   -schedule="1d:7,1w:5,1m:12,1y:4": rotation schedule and retention period
   -verbose=false: verbose output
   -version=false: prints current version
