@@ -105,7 +105,7 @@ var config struct {
 
 func init() {
 	flag.StringVar(&config.format, "format", "2006-01-02", "date format used in filenames as a representation of January 2, 2006")
-	flag.StringVar(&config.schedule, "schedule", "1d:7,1w:4,1m:12,1y:4", "rotation schedule and retention period")
+	flag.StringVar(&config.schedule, "schedule", "1d:7,1w:5,1m:12,1y:4", "rotation schedule and retention period")
 	flag.BoolVar(&config.version, "version", false, "prints current version")
 	flag.BoolVar(&config.verbose, "verbose", false, "verbose output")
 }
